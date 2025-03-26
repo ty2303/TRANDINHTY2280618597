@@ -3,7 +3,8 @@ from cipher.caesar import CaesarCipher
 from cipher.playfair.playfair_cipher import PlayFairCipher
 from cipher.vigenere.vigenere_cipher import VigenereCipher
 from cipher.railfence.railfence_cipher import RailFenceCipher
-from cipher.transposition.transposition_cipher import TranspositionCipher  
+from cipher.transposition.transposition_cipher import TranspositionCipher 
+
 app = Flask(__name__)
 
 # Router routes for home page
@@ -23,8 +24,8 @@ def caesar_encrypt():
     Caesar = CaesarCipher()
     
     encrypted_text = Caesar.encrypt_text(text, key)
-    return render_template('caesar_encrypt.html', text=text, key=key, encrypted_text=encrypted_text)
-   
+    return render_template('caesar_result.html', text=text, key=key, encrypted_text=encrypted_text)
+#    return f"text: {text}<br>key: {key}<br>encrypted text: {encrypted_text}"
 
 @app.route("/decrypt", methods=['POST'])
 def caesar_decrypt():
@@ -60,7 +61,7 @@ def playfair_decrypt():
     decrypted_text = playfair.playfair_decrypt(cipher_text, matrix)
     return f"Cipher text: {cipher_text}<br>Key: {key}<br>Decrypted text: {decrypted_text}"
 
-# Router routes for Vigenere cipher
+# Router routes for Vigenère cipher
 @app.route("/vigenere")
 def vigenere():
     return render_template('vigenere.html')
