@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Buoi2/Lab-03"
+    ]
+}
